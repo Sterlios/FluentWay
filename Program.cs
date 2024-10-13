@@ -10,7 +10,7 @@ namespace FluentWay
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<SchoolContext>(options =>
+            builder.Services.AddDbContext<UserContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("School")));
 
             var app = builder.Build();

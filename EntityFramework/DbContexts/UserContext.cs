@@ -3,20 +3,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FluentWay.EntityFramework.DbContexts
 {
-    public class SchoolContext : DbContext
+    public class UserContext : DbContext
     {
-        public SchoolContext(DbContextOptions options) : base(options)
+        public UserContext(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Student> Students { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>().ToTable("Courses");
-            modelBuilder.Entity<Student>().ToTable("Students");
+            modelBuilder.Entity<Role>().ToTable("Roles");
             modelBuilder.Entity<User>().ToTable("Users");
         }
     }
