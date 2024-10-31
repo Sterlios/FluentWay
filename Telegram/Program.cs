@@ -8,8 +8,6 @@ namespace Telegram
         {
             IHostBuilder hostBuilder = Host.CreateDefaultBuilder(args);
 
-            hostBuilder.ConfigureServices();
-
             var host = hostBuilder.Build();
 
             await host.RunAsync();
