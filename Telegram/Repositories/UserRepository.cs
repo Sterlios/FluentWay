@@ -12,7 +12,7 @@ namespace Telegram.Repositories
         public UserRepository(UserContext userContext) =>
             _userContext = userContext ?? throw new ArgumentNullException(nameof(userContext));
 
-        public void Add(User user)
+        public void Add(UserEntity user)
         {
             ArgumentNullException.ThrowIfNull(user);
 
@@ -20,7 +20,10 @@ namespace Telegram.Repositories
                 _userContext.Users.Add(user);
         }
 
-        public User? GetById(int id) =>
-            _userContext.Users.FirstOrDefault(user => user.Id == id);
+        public UserEntity? GetById(int id) =>
+            _userContext.Users.Find(id);
+
+        public void Update(UserEntity user) =>
+            _userContext.Users.Update(user);
     }
 }

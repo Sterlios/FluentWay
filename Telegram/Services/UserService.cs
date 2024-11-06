@@ -10,7 +10,7 @@ namespace Telegram.Services
         public UserService(IUserRepository userRepository) =>
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
 
-        public bool AddUser(
+        public bool RegisterUser(
             int id,
             string? nickname,
             string? name,
@@ -18,22 +18,42 @@ namespace Telegram.Services
         {
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(id);
 
-            User? user = _userRepository.GetById(id);
+            UserEntity? user = _userRepository.GetById(id);
 
             if (user is not null)
+            {
+                Activate(user);
                 return false;
+            }
 
-            user = new User()
+            user = new UserEntity()
             {
                 Id = id,
                 Nickname = nickname,
                 Name = name,
                 LastName = surname,
+                IsActive = true
             };
 
             _userRepository.Add(user);
 
             return true;
+        }
+
+        public void DeactivateUser(int id)
+        {
+            UserEntity? user = _userRepository.GetById(id)
+                ?? throw new ArgumentOutOfRangeException(nameof(id));
+
+            user.IsActive = false;
+
+            _userRepository.Update(user);
+        }
+
+        private void Activate(UserEntity user)
+        {
+            user.IsActive = true;
+            _userRepository.Update(user);
         }
     }
 }

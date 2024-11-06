@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using FluentAssertions;
+using Telegram.Configurations;
 using Telegram.Contracts;
 using Telegram.DbContexts;
 using Telegram.Repositories;
@@ -15,7 +16,11 @@ namespace TelegramTests
 
         public UserServiceTest()
         {
-            _userRepository = new UserRepository(new UserContext());
+            DbNameConvention dbUserConvention = new DbNameConvention()
+            {
+                Schema = "TestActual"
+            };
+            _userRepository = new UserRepository(new UserContext(dbUserConvention));
             _userService = new UserService(_userRepository);
         }
 
@@ -24,7 +29,7 @@ namespace TelegramTests
         {
             int id = 1;
 
-            var result = _userService.AddUser(id, null, null, null);
+            var result = _userService.RegisterUser(id, null, null, null);
 
             result.Should().BeTrue();
         }
@@ -34,8 +39,8 @@ namespace TelegramTests
         {
             int id = 1;
 
-            _userService.AddUser(id, null, null, null);
-            var result = _userService.AddUser(id, null, null, null);
+            _userService.RegisterUser(id, null, null, null);
+            var result = _userService.RegisterUser(id, null, null, null);
 
             result.Should().BeFalse();
         }

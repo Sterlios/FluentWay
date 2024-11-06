@@ -4,7 +4,8 @@ namespace Telegram.Contracts
 {
     public interface IUserRepository
     {
-        void Add(User user);
-        User? GetById(int id);
+        void Add(UserEntity user);
+        UserEntity? GetById(int id);
+        void Update(UserEntity user);
     }
 }
