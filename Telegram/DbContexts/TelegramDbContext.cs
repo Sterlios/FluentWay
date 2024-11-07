@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Telegram.DbConfigurations;
 using Telegram.Models;
 
 namespace Telegram.DbContexts
@@ -18,6 +19,12 @@ namespace Telegram.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new ContentConfiguration());
+            modelBuilder.ApplyConfiguration(new PostConfiguration());
+            modelBuilder.ApplyConfiguration(new PostTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new PostHistoryConfiguration());
         }
     }
 }
