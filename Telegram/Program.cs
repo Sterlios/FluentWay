@@ -13,12 +13,8 @@ namespace Telegram
             var hostBuilder = Host.CreateDefaultBuilder(args);
 
             hostBuilder.ConfigureServices((hostBuilder, services) =>
-            {
                 services.AddDbContext<TelegramDbContext>(options =>
-                {
-                    options.UseSqlServer(hostBuilder.Configuration.GetConnectionString("TelegramDb"));
-                });
-            });
+                    options.UseSqlServer(hostBuilder.Configuration.GetConnectionString("TelegramDb"))));
 
             var host = hostBuilder.Build();
 

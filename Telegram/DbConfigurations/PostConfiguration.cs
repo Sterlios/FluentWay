@@ -4,9 +4,9 @@ using Telegram.Models;
 
 namespace Telegram.DbConfigurations
 {
-    public class PostConfiguration : IEntityTypeConfiguration<PostEntity>
+    public class PostConfiguration : IEntityTypeConfiguration<Post>
     {
-        public void Configure(EntityTypeBuilder<PostEntity> builder)
+        public void Configure(EntityTypeBuilder<Post> builder)
         {
             builder.HasKey(post => post.Id);
 
@@ -16,12 +16,12 @@ namespace Telegram.DbConfigurations
 
             builder
                 .HasOne(post => post.Content)
-                .WithOne(content => content.Post);
+                .WithOne(content => content.Post)
+                .HasForeignKey(typeof(Content));
 
             builder
-                .HasOne(post => post.Type)
-                .WithMany(postType => postType.Posts)
-                .HasForeignKey(post => post.Type);
+                .HasOne(post => post.TypeOfTime)
+                .WithMany(postType => postType.Posts);
 
             builder
                 .HasMany(post => post.Histories)

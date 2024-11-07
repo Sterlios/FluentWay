@@ -4,9 +4,9 @@ using Telegram.Models;
 
 namespace Telegram.DbConfigurations
 {
-    public class RoleConfiguration : IEntityTypeConfiguration<RoleEntity>
+    public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<RoleEntity> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
             builder.HasKey(role => role.Id);
 

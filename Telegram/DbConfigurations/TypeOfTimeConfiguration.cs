@@ -4,15 +4,15 @@ using Telegram.Models;
 
 namespace Telegram.DbConfigurations
 {
-    public class PostTypeConfiguration : IEntityTypeConfiguration<PostTypeEntity>
+    public class TypeOfTimeConfiguration : IEntityTypeConfiguration<TypeOfTime>
     {
-        public void Configure(EntityTypeBuilder<PostTypeEntity> builder)
+        public void Configure(EntityTypeBuilder<TypeOfTime> builder)
         {
             builder.HasKey(postHistory => postHistory.Id);
 
             builder
                 .HasMany(type => type.Posts)
-                .WithOne(post => post.Type);
+                .WithOne(post => post.TypeOfTime);
         }
     }
 }

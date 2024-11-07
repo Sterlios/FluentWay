@@ -4,9 +4,9 @@ using Telegram.Models;
 
 namespace Telegram.DbConfigurations
 {
-    public class ContentConfiguration : IEntityTypeConfiguration<ContentEntity>
+    public class ContentConfiguration : IEntityTypeConfiguration<Content>
     {
-        public void Configure(EntityTypeBuilder<ContentEntity> builder)
+        public void Configure(EntityTypeBuilder<Content> builder)
         {
             builder.HasKey(content => content.Id);
 
