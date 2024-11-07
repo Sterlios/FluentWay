@@ -4,18 +4,18 @@ using Telegram.Models;
 
 namespace Telegram.DbContexts
 {
-    internal class TelegramDbContext : DbContext
+    public class TelegramDbContext : DbContext
     {
         public TelegramDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        private DbSet<User> Users { get; set; }
-        private DbSet<Role> Roles { get; set; }
-        private DbSet<Post> Posts { get; set; }
-        private DbSet<TypeOfTime> PostTypes { get; set; }
-        private DbSet<Content> Contents { get; set; }
-        private DbSet<PostHistory> Histories { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostType> PostTypes { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<PostHistory> Histories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Telegram.DbContexts
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new PostConfiguration());
             modelBuilder.ApplyConfiguration(new PostHistoryConfiguration());
-            modelBuilder.ApplyConfiguration(new TypeOfTimeConfiguration());
+            modelBuilder.ApplyConfiguration(new PostTypeConfiguration());
         }
     }
 }

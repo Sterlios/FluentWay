@@ -20,7 +20,7 @@ namespace Telegram.DbConfigurations
                 .HasForeignKey(typeof(Content));
 
             builder
-                .HasOne(post => post.TypeOfTime)
+                .HasOne(post => post.PostType)
                 .WithMany(postType => postType.Posts);
 
             builder
