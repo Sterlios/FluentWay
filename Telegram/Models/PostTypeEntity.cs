@@ -1,6 +1,6 @@
 ﻿namespace Telegram.Models
 {
-    public class PostType
+    public class PostTypeEntity
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -10,6 +10,6 @@
         public int RoleId { get; set; }
         public RoleEntity? Role { get; set; }
         public bool IsActive { get; set; }
-        public List<PostHistoryEntity> Histories { get; set; }
+        public List<PostHistoryEntity> Histories { get; set; } = new List<PostHistoryEntity>();
     }
 }

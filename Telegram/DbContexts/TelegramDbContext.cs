@@ -12,7 +12,7 @@ namespace Telegram.DbContexts
         private DbSet<UserEntity> Users { get; set; }
         private DbSet<RoleEntity> Roles { get; set; }
         private DbSet<PostEntity> Posts { get; set; }
-        private DbSet<PostType> PostTypes { get; set; }
+        private DbSet<PostTypeEntity> PostTypes { get; set; }
         private DbSet<ContentEntity> Contents { get; set; }
         private DbSet<PostHistoryEntity> Histories { get; set; }
 
