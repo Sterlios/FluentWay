@@ -18,20 +18,10 @@ namespace Telegram.DbConfigurations
                 .HasMany(role => role.Posts)
                 .WithMany(post => post.Roles);
 
-            builder.HasData(() =>
-            {
-                var roleTypes = Enum.GetValues(typeof(RoleEnum));
-                List<Role> roles = new List<Role>(roleTypes.Length);
-
-                foreach (RoleEnum roleType in roleTypes)
-                    roles.Add(new Role()
-                    {
-                        Id = roleType,
-                        Name = roleType.ToString()
-                    });
-
-                return roles;
-            });
+            builder.HasData(Enum.GetValues(typeof(RoleEnum))
+                    .OfType<RoleEnum>()
+                    .Select(x => new Role() { Id = x, Name = x.ToString() })
+                    .ToArray());
         }
     }
 }

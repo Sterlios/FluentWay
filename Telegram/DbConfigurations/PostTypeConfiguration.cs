@@ -14,20 +14,10 @@ namespace Telegram.DbConfigurations
                 .HasMany(type => type.Posts)
                 .WithOne(post => post.PostType);
 
-            builder.HasData(() =>
-            {
-                var postTypes = Enum.GetValues(typeof(PostTypeEnum));
-                List<PostType> posts = new List<PostType>(postTypes.Length);
-
-                foreach (PostTypeEnum postType in postTypes)
-                    posts.Add(new PostType()
-                    {
-                        Id = postType,
-                        Name = postType.ToString()
-                    });
-
-                return posts.ToArray();
-            });
+            builder.HasData(Enum.GetValues(typeof(PostTypeEnum))
+                    .OfType<PostTypeEnum>()
+                    .Select(x => new PostType() { Id = x, Name = x.ToString() })
+                    .ToArray());
         }
     }
 }
