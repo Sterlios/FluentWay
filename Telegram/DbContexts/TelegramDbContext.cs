@@ -12,7 +12,6 @@ namespace Telegram.DbContexts
         public TelegramDbContext(DbContextOptions options, ILogger<TelegramDbContext> logger) : base(options)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _logger.LogInformation("TelegramDbContext Created");
         }
 
         public DbSet<User> Users { get; set; }

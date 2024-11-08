@@ -14,7 +14,6 @@ namespace Telegram.Repositories
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _logger.LogInformation("UserRepository Created");
         }
 
         public User GetById(int id)

@@ -49,8 +49,6 @@ namespace Telegram
 
             ArgumentNullException.ThrowIfNull(botConfiguration);
 
-            var token = botConfiguration.Token;
-
             TelegramBotClientOptions options = new(botConfiguration.Token);
 
             return new TelegramBotClient(options, httpClient);

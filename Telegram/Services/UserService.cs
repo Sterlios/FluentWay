@@ -13,7 +13,6 @@ namespace Telegram.Services
         {
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _logger.LogInformation("UserService Created");
         }
 
         public void Activate(

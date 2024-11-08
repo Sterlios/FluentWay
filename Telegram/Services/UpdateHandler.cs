@@ -14,7 +14,6 @@ namespace Telegram.Services
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
-            _logger.LogInformation("UpdateHandler Created");
         }
 
         public Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, HandleErrorSource source, CancellationToken cancellationToken) => throw new NotImplementedException();
