@@ -34,7 +34,7 @@ namespace Telegram.Migrations
 
                     b.HasIndex("RolesId");
 
-                    b.ToTable("PostRole");
+                    b.ToTable("PostRole", (string)null);
                 });
 
             modelBuilder.Entity("Telegram.Models.Content", b =>
@@ -57,7 +57,7 @@ namespace Telegram.Migrations
                     b.HasIndex("PostId")
                         .IsUnique();
 
-                    b.ToTable("Contents");
+                    b.ToTable("Contents", (string)null);
                 });
 
             modelBuilder.Entity("Telegram.Models.Post", b =>
@@ -87,7 +87,7 @@ namespace Telegram.Migrations
 
                     b.HasIndex("PostTypeId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("Telegram.Models.PostHistory", b =>
@@ -113,7 +113,7 @@ namespace Telegram.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Histories");
+                    b.ToTable("Histories", (string)null);
                 });
 
             modelBuilder.Entity("Telegram.Models.PostType", b =>
@@ -126,7 +126,7 @@ namespace Telegram.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PostTypes");
+                    b.ToTable("PostTypes", (string)null);
 
                     b.HasData(
                         new
@@ -157,7 +157,7 @@ namespace Telegram.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
 
                     b.HasData(
                         new
@@ -209,7 +209,7 @@ namespace Telegram.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PostRole", b =>

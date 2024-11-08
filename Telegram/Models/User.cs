@@ -11,8 +11,9 @@ namespace Telegram.Models
         public string? Name { get; set; } = string.Empty;
         public string? Surname { get; set; } = string.Empty;
         public string? Email { get; set; } = string.Empty;
-        public required RoleEnum RoleId { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
+        public RoleEnum RoleId { get; set; } = RoleEnum.Newbie;
+
         public List<PostHistory> Histories { get; set; } = new List<PostHistory>();
         public Role? Role { get; set; }
     }

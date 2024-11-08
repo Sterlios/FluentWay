@@ -11,6 +11,7 @@
 
     public enum PostTypeEnum
     {
+        None = 0,
         Greeting = 1,
         Returned,
         OneTime,

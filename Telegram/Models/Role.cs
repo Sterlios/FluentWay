@@ -10,6 +10,7 @@
 
     public enum RoleEnum
     {
+        None = 0,
         Newbie = 1,
         PotentialStudent,
         Student,
