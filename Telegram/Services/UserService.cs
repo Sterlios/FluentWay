@@ -1,4 +1,5 @@
-﻿using Telegram.Models;
+﻿using Microsoft.Extensions.Logging;
+using Telegram.Models;
 using Telegram.Repositories;
 
 namespace Telegram.Services
@@ -6,10 +7,13 @@ namespace Telegram.Services
     public class UserService
     {
         private readonly UserRepository _userRepository;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(UserRepository userRepository)
+        public UserService(UserRepository userRepository, ILogger<UserService> logger)
         {
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logger.LogInformation("UserService Created");
         }
 
         public void Activate(

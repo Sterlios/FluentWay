@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Telegram.DbContexts;
 using Telegram.Models;
 
@@ -7,9 +8,14 @@ namespace Telegram.Repositories
     public class UserRepository
     {
         private readonly TelegramDbContext _context;
+        private readonly ILogger<UserRepository> _logger;
 
-        public UserRepository(TelegramDbContext context) =>
-            _context = context;
+        public UserRepository(TelegramDbContext context, ILogger<UserRepository> logger)
+        {
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logger.LogInformation("UserRepository Created");
+        }
 
         public User GetById(int id)
         {

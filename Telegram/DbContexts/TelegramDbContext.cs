@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Telegram.DbConfigurations;
 using Telegram.Models;
 
@@ -6,8 +7,12 @@ namespace Telegram.DbContexts
 {
     public class TelegramDbContext : DbContext
     {
-        public TelegramDbContext(DbContextOptions options) : base(options)
+        private readonly ILogger<TelegramDbContext> _logger;
+
+        public TelegramDbContext(DbContextOptions options, ILogger<TelegramDbContext> logger) : base(options)
         {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logger.LogInformation("TelegramDbContext Created");
         }
 
         public DbSet<User> Users { get; set; }
